@@ -276,18 +276,18 @@
                     <p class="text-gray-700">Damos la bienvenida a todos nuestros estudiantes para el nuevo ciclo escolar. Les deseamos un exitoso regreso a clases!</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
-                <!-- Noticia 2 -->
+                <!-- Noticia 2 (Actualizada) -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
                     <h3 class="font-semibold text-xl mb-2 text-black">Venta de productos TEBAEV 2025</h3>
                     <p class="text-sm text-gray-500 mb-4">3 de Junio de 2025</p>
-                    <p class="text-gray-700">Prepárense para mostrar sus habilidades! Próximamente abrimos inscripciones para nuestro concurso anual de talentos.</p>
+                    <p class="text-gray-700">Prepárense para la venta de productos elaborados por nuestros estudiantes. ¡Apoya el talento local!</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
-                <!-- Noticia 3 -->
+                <!-- Noticia 3 (Actualizada) -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
                     <h3 class="font-semibold text-xl mb-2 text-red-600">Excursión al balneario San Miguelito</h3>
                     <p class="text-sm text-gray-500 mb-4">23 de Junio de 2025</p>
-                    <p class="text-gray-700">Nuestros estudiantes disfrutaran de una increíble excursión educativa al balneario san Miguelito.</p>
+                    <p class="text-gray-700">Nuestros estudiantes disfrutarán de una increíble excursión al balneario San Miguelito para cerrar el ciclo escolar.</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Ver fotos &rarr;</a>
                 </div>
             </div>
@@ -302,4 +302,91 @@
                 Si estás interesado en formar parte de nuestra comunidad, por favor completa el siguiente formulario de pre-registro y nos pondremos en contacto contigo.
             </p>
             <form id="preregister-form" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-xl text-gray-800">
-                <div
+                <div class="mb-6">
+                    <label for="nombre_completo" class="block text-left text-lg font-semibold mb-2 text-gray-700">Nombre Completo</label>
+                    <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Tu nombre completo" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
+                </div>
+                <div class="mb-6">
+                    <label for="whatsapp" class="block text-left text-lg font-semibold mb-2 text-gray-700">Número de Contacto (WhatsApp)</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 2941234567" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
+                </div>
+                <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Enviar Pre-registro
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto/Footer -->
+    <footer id="contacto" class="bg-black text-white py-10">
+        <div class="container mx-auto text-center px-4">
+            <h3 class="text-2xl font-bold mb-4 text-red-600">Contacto</h3>
+            <p class="mb-2">Dirección: Carretera Estatal Trópico-Montepío, Dos de Abril, Municipio de San Andrés Tuxtla, Ver., s/n, 95807 Dos de Abril, Ver.</p>
+            <p class="mb-2">Teléfono: 294 117 1611</p>
+            <p class="mb-4">Email: info@tebaevdosdeabril.edu</p>
+            <p class="text-sm">
+                © 2025 Telebachillerato Dos de Abril. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para el botón de menú hamburguesa
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const navLinks = document.getElementById('nav-links');
+
+            menuButton.addEventListener('click', () => {
+                navLinks.classList.toggle('hidden'); // Alterna la visibilidad
+                navLinks.classList.toggle('flex');   // Cambia a flex para mostrar
+            });
+
+            // Cerrar menú si se hace clic en un enlace (solo en móvil)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Si el tamaño de la ventana es menor que el breakpoint 'md' (768px por defecto en Tailwind)
+                    if (window.innerWidth < 768) {
+                        navLinks.classList.add('hidden');
+                        navLinks.classList.remove('flex');
+                    }
+                });
+            });
+
+            // Asegurar que el menú se muestre correctamente al redimensionar a desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    navLinks.classList.remove('hidden'); // Siempre visible en desktop
+                    navLinks.classList.add('flex');
+                } else {
+                    // Si se redimensiona a móvil desde desktop, ocultar si no está desplegado
+                    if (!navLinks.classList.contains('flex')) { // Si no tiene la clase 'flex' significa que está oculto
+                        navLinks.classList.add('hidden');
+                        navLinks.classList.remove('flex');
+                    }
+                }
+            });
+
+            // JavaScript para el formulario de pre-registro a WhatsApp
+            const preregisterForm = document.getElementById('preregister-form');
+            preregisterForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Previene el envío normal del formulario
+
+                const nombreCompleto = document.getElementById('nombre_completo').value;
+                const whatsappNumero = document.getElementById('whatsapp').value.replace(/\s/g, ''); // Elimina espacios del número
+
+                const mensajeWhatsApp = `Hola, mi nombre es ${nombreCompleto} y estoy interesado(a) en el Telebachillerato Dos de Abril. Mi número de contacto es ${whatsappNumero}. Me gustaría obtener más información.`;
+
+                // Codifica el mensaje para URL
+                const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
+
+                // Construye la URL de WhatsApp
+                const numeroOficialWhatsApp = '5212941171611'; // Agregamos el prefijo de país 52 para México y 1 para móvil
+                const whatsappUrl = `https://wa.me/${numeroOficialWhatsApp}?text=${mensajeCodificado}`;
+
+                // Redirige al usuario a WhatsApp
+                window.open(whatsappUrl, '_blank'); // Abre en una nueva pestaña
+            });
+        });
+    </script>
+</body>
+</html>
