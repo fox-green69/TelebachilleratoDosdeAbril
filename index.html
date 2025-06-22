@@ -44,7 +44,7 @@
             height: 100%;
         }
 
-        /* La barra de navegación ahora siempre es fija, sin ocultarse al scroll */
+        /* La barra de navegación ahora siempre es fija */
         .navbar {
             position: fixed;
             top: 0;
@@ -223,7 +223,7 @@
         </div>
     </section>
 
-    <!-- Sección de Noticias y Eventos -->
+    <!-- Sección de Noticias y Eventos (Ahora como un feed) -->
     <section id="noticias" class="py-16 md:py-24 bg-gray-100">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-black">
@@ -232,26 +232,31 @@
             <p class="text-lg text-center mb-8 max-w-2xl mx-auto">
                 Mantente al tanto de las últimas novedades, comunicados y eventos importantes de nuestra comunidad escolar.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Noticia 1 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
-                    <h3 class="font-semibold text-xl mb-2 text-red-600">Inicio de Clases Ciclo 2025-2026</h3>
-                    <p class="text-sm text-gray-500 mb-4">5 de Agosto de 2025</p>
-                    <p class="text-gray-700">Damos la bienvenida a todos nuestros estudiantes para el nuevo ciclo escolar. Les deseamos un exitoso regreso a clases!</p>
+            <div class="max-w-xl mx-auto space-y-8">
+                <!-- Noticia 1 (Formato de Feed) -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://placehold.co/600x350/FFDDC1/000000?text=Clases+Iniciadas" alt="Imagen Noticia: Inicio de Clases" class="w-full h-auto rounded-md mb-4 object-cover">
+                    <p class="text-sm text-gray-500 mb-2">5 de Agosto de 2025</p>
+                    <h3 class="font-bold text-xl mb-2 text-red-600">¡Inicio de Clases Ciclo 2025-2026!</h3>
+                    <p class="text-gray-700 leading-relaxed">Damos la bienvenida a todos nuestros estudiantes para el nuevo ciclo escolar. Les deseamos un exitoso regreso a clases, lleno de aprendizaje y nuevas experiencias. ¡Juntos construiremos un futuro brillante!</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
-                <!-- Noticia 2 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
-                    <h3 class="font-semibold text-xl mb-2 text-black">Venta de productos TEBAEV 2025</h3>
-                    <p class="text-sm text-gray-500 mb-4">3 de Junio de 2025</p>
-                    <p class="text-gray-700">Prepárense para la venta de productos elaborados por nuestros estudiantes. ¡Apoya el talento local!</p>
+
+                <!-- Noticia 2 (Formato de Feed - Venta de Productos) -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622WA0018.jpg" alt="Imagen Noticia: Venta de Productos TEBAEV" class="w-full h-auto rounded-md mb-4 object-cover">
+                    <p class="text-sm text-gray-500 mb-2">3 de Junio de 2025</p>
+                    <h3 class="font-bold text-xl mb-2 text-black">¡Exitosa Venta de Productos TEBAEV 2025!</h3>
+                    <p class="text-gray-700 leading-relaxed">Nuestros estudiantes demostraron su creatividad y espíritu emprendedor en la venta anual de productos. ¡Gracias a todos por apoyar el talento local y el trabajo de nuestros alumnos!</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
-                <!-- Noticia 3 -->
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
-                    <h3 class="font-semibold text-xl mb-2 text-red-600">Excursión al balneario San Miguelito</h3>
-                    <p class="text-sm text-gray-500 mb-4">23 de Junio de 2025</p>
-                    <p class="text-gray-700">Nuestros estudiantes disfrutarán de una increíble excursión al balneario San Miguelito para cerrar el ciclo escolar.</p>
+
+                <!-- Noticia 3 (Formato de Feed - Excursión) -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622-WA0019.jpg" alt="Imagen Noticia: Excursión Balneario San Miguelito" class="w-full h-auto rounded-md mb-4 object-cover">
+                    <p class="text-sm text-gray-500 mb-2">23 de Junio de 2025</p>
+                    <h3 class="font-bold text-xl mb-2 text-red-600">¡Gran Excursión al Balneario San Miguelito!</h3>
+                    <p class="text-gray-700 leading-relaxed">Nuestros estudiantes disfrutaron de una increíble excursión al balneario San Miguelito. Fue un día lleno de diversión, convivencia y momentos inolvidables para cerrar el ciclo escolar.</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Ver fotos &rarr;</a>
                 </div>
             </div>
@@ -277,6 +282,7 @@
                 <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
                     Enviar Pre-registro
                 </button>
+                <div id="form-status-message" class="mt-4 text-sm text-center text-gray-700 hidden"></div>
             </form>
         </div>
     </section>
@@ -332,11 +338,20 @@
 
             // JavaScript para el formulario de pre-registro a WhatsApp
             const preregisterForm = document.getElementById('preregister-form');
+            const formStatusMessage = document.getElementById('form-status-message');
+
             preregisterForm.addEventListener('submit', (event) => {
                 event.preventDefault(); // Previene el envío normal del formulario
 
-                const nombreCompleto = document.getElementById('nombre_completo').value;
-                const lugarVivienda = document.getElementById('lugar_vivienda').value;
+                const nombreCompleto = document.getElementById('nombre_completo').value.trim();
+                const lugarVivienda = document.getElementById('lugar_vivienda').value.trim();
+
+                if (!nombreCompleto || !lugarVivienda) {
+                    formStatusMessage.textContent = 'Por favor, rellena todos los campos.';
+                    formStatusMessage.classList.remove('hidden');
+                    formStatusMessage.classList.add('text-red-500'); // Mensaje de error
+                    return;
+                }
 
                 // Número de WhatsApp del Telebachillerato (con prefijo de país para México)
                 const numeroOficialWhatsApp = '5212941171611'; // Formato para México: Código País (52) + 1 + Número Celular (10 dígitos)
@@ -349,8 +364,28 @@
                 // Construye la URL de WhatsApp
                 const whatsappUrl = `https://wa.me/${numeroOficialWhatsApp}?text=${mensajeCodificado}`;
 
-                // Redirige al usuario a WhatsApp
-                window.open(whatsappUrl, '_blank'); // Abre en una nueva pestaña
+                console.log('URL de WhatsApp generada:', whatsappUrl); // Para depurar: verifica la URL en la consola
+
+                // Intenta abrir la URL
+                try {
+                    const newWindow = window.open(whatsappUrl, '_blank');
+                    if (newWindow) {
+                        formStatusMessage.textContent = 'Redirigiendo a WhatsApp... Si la ventana no se abre, revisa tu bloqueador de pop-ups.';
+                        formStatusMessage.classList.remove('hidden', 'text-red-500');
+                        formStatusMessage.classList.add('text-green-600'); // Mensaje de éxito/información
+                    } else {
+                        // Esto se ejecuta si el navegador bloquea el pop-up
+                        formStatusMessage.textContent = 'No se pudo abrir WhatsApp. Por favor, desactiva tu bloqueador de pop-ups o intenta directamente con tu aplicación de WhatsApp.';
+                        formStatusMessage.classList.remove('hidden', 'text-green-600');
+                        formStatusMessage.classList.add('text-red-500'); // Mensaje de error
+                    }
+                } catch (error) {
+                    // En caso de otros errores de JavaScript al intentar abrir la ventana
+                    formStatusMessage.textContent = 'Ocurrió un error al intentar abrir WhatsApp. Inténtalo de nuevo más tarde.';
+                    formStatusMessage.classList.remove('hidden', 'text-green-600');
+                    formStatusMessage.classList.add('text-red-500'); // Mensaje de error
+                    console.error('Error al abrir WhatsApp:', error);
+                }
             });
         });
     </script>
