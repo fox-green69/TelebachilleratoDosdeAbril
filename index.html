@@ -227,18 +227,16 @@
                         <p class="text-sm text-gray-600">Disfrutando de las clases y actividades educativas.</p>
                     </div>
                 </div>
-                <!-- Ejemplo de Imagen -->
+                <!-- [Image of Sports activities] -->
                 <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-                    <!-- [Image of Sports activities] -->
                     <img src="https://placehold.co/600x400/DC2626/FFFFFF?text=Deportes" alt="Actividades deportivas" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-lg text-black">Momentos deportivos</p>
                         <p class="text-sm text-gray-600">Fútbol y voleibol en nuestro amplio patio.</p>
                     </div>
                 </div>
-                <!-- Ejemplo de Imagen -->
+                <!-- [Image of Handicraft workshop] -->
                 <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
-                    <!-- [Image of Handicraft workshop] -->
                     <img src="https://placehold.co/600x400/000000/FFFFFF?text=Manualidades" alt="Taller de manualidades" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-lg text-red-600">Taller de creatividad</p>
@@ -307,8 +305,8 @@
                     <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Tu nombre completo" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
                 </div>
                 <div class="mb-6">
-                    <label for="whatsapp" class="block text-left text-lg font-semibold mb-2 text-gray-700">Número de Contacto (WhatsApp)</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 2941234567" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
+                    <label for="whatsapp_input" class="block text-left text-lg font-semibold mb-2 text-gray-700">Número de Contacto (WhatsApp)</label>
+                    <input type="tel" id="whatsapp_input" name="whatsapp_input" placeholder="Ej: 2941234567" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
                 </div>
                 <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
                     Enviar Pre-registro
@@ -372,16 +370,23 @@
                 event.preventDefault(); // Previene el envío normal del formulario
 
                 const nombreCompleto = document.getElementById('nombre_completo').value;
-                const whatsappNumero = document.getElementById('whatsapp').value.replace(/\s/g, ''); // Elimina espacios del número
+                const whatsappNumeroCrudo = document.getElementById('whatsapp_input').value; // Obtener el valor tal cual
+                const whatsappNumeroLimpio = whatsappNumeroCrudo.replace(/\s|-/g, ''); // Elimina espacios y guiones
 
-                const mensajeWhatsApp = `Hola, mi nombre es ${nombreCompleto} y estoy interesado(a) en el Telebachillerato Dos de Abril. Mi número de contacto es ${whatsappNumero}. Me gustaría obtener más información.`;
+                // Para México, los números de 10 dígitos (celular) requieren el prefijo 521.
+                // Es importante que el número en la URL de WhatsApp sea sin el signo '+'
+                // y con el código de país.
+                const numeroOficialWhatsApp = '5212941171611'; // Número del Telebachillerato con prefijo 521 para móvil de México.
+
+                const mensajeWhatsApp = `Hola, mi nombre es ${nombreCompleto} y estoy interesado(a) en el Telebachillerato Dos de Abril. Mi número de contacto es ${whatsappNumeroLimpio}. Me gustaría obtener más información.`;
 
                 // Codifica el mensaje para URL
                 const mensajeCodificado = encodeURIComponent(mensajeWhatsApp);
 
                 // Construye la URL de WhatsApp
-                const numeroOficialWhatsApp = '5212941171611'; // Agregamos el prefijo de país 52 para México y 1 para móvil
                 const whatsappUrl = `https://wa.me/${numeroOficialWhatsApp}?text=${mensajeCodificado}`;
+
+                console.log('URL de WhatsApp generada:', whatsappUrl); // Para depurar: verifica la URL en la consola
 
                 // Redirige al usuario a WhatsApp
                 window.open(whatsappUrl, '_blank'); // Abre en una nueva pestaña
