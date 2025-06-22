@@ -44,36 +44,47 @@
             height: 100%;
         }
 
-        /* Estilos para la barra de navegación que se oculta/muestra */
+        /* La barra de navegación ahora siempre es fija, sin ocultarse al scroll */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            z-index: 1000;
         }
 
-        .navbar-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
+        /* Efecto brilloso para los enlaces de navegación */
+        .nav-link-glow:hover {
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5); /* Sombra roja sutil */
+            transform: translateY(-2px); /* Pequeño levantamiento */
+        }
+        .nav-link-glow:hover .text-red-600 {
+            text-shadow: 0 0 8px rgba(220, 38, 38, 0.8); /* Brillo en el texto */
         }
     </style>
 </head>
 <body class="text-gray-800">
     <!-- Barra de navegación -->
     <nav id="main-navbar" class="navbar bg-white text-gray-800 p-4 shadow-lg border-b border-gray-200">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center flex-wrap">
             <!-- Título del Telebachillerato en negro -->
-            <a href="#" class="text-xl font-bold text-black mb-2 md:mb-0">Telebachillerato Dos de Abril</a>
-            <div class="flex flex-wrap justify-center md:justify-end space-x-2 md:space-x-4">
-                <!-- Opciones de navegación con estilo de "cuerpos entrelazados" -->
-                <a href="#inicio" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Inicio</a>
-                <a href="#tebaev" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Sobre el TEBAEV</a>
-                <a href="#estudiantes" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Vida Estudiantil</a>
-                <a href="#galeria" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Galería</a>
-                <a href="#noticias" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Noticias</a>
-                <a href="#preregistro" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Pre-registro</a>
-                <a href="#contacto" class="py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Contacto</a>
+            <a href="#" class="text-xl font-bold text-black py-2">Telebachillerato Dos de Abril</a>
+
+            <!-- Botón de menú hamburguesa para móviles -->
+            <button id="menu-button" class="md:hidden p-2 rounded-full text-gray-800 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-600 transition duration-300">
+                <!-- Icono de hamburguesa SVG (3 líneas) -->
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+
+            <!-- Contenedor de enlaces de navegación (oculto por defecto en móvil, visible en desktop) -->
+            <div id="nav-links" class="hidden w-full md:flex md:w-auto md:space-x-4 mt-2 md:mt-0 flex-col md:flex-row">
+                <!-- Los enlaces actuales con el efecto "brilloso" -->
+                <a href="#inicio" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Inicio</a>
+                <a href="#tebaev" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Sobre el TEBAEV</a>
+                <a href="#estudiantes" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Vida Estudiantil</a>
+                <a href="#galeria" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Galería</a>
+                <a href="#noticias" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Noticias</a>
+                <a href="#preregistro" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Pre-registro</a>
+                <a href="#contacto" class="nav-link-glow py-2 px-4 rounded-full hover:bg-gray-100 hover:text-red-600 transition duration-300">Contacto</a>
             </div>
         </div>
     </nav>
@@ -182,7 +193,7 @@
                         En el Telebachillerato Dos de Abril, la vida estudiantil va más allá de las aulas. Fomentamos un ambiente de participación activa y desarrollo personal a través de diversas actividades y proyectos. Contamos con el mejor ambiente de convivencia entre profesores y estudiantes, lo que asegura una experiencia educativa enriquecedora.
                     </p>
                     <p class="text-lg mb-4 leading-relaxed">
-                        Nuestros estudiantes se involucran en iniciativas que enriquecen su aprendizaje y fortalecen sus lazos comunitarios, incluyendo emocionantes **excursiones en grupo** que complementan su formación académica y personal.
+                        Nuestros estudiantes se involucran en iniciativas que enriquecen su aprendizaje y fortalecen sus lazos comunitarios, incluyendo emocionantes excursiones en grupo que complementan su formación académica y personal.
                     </p>
                     <h3 class="text-xl font-semibold mb-4 text-black">Actividades Paraescolares</h3>
                     <ul class="list-disc list-inside text-lg leading-relaxed space-y-2">
@@ -234,14 +245,13 @@
                         <p class="text-sm text-gray-600">Desarrollando habilidades en el taller de manualidades.</p>
                     </div>
                 </div>
-                <!-- Ejemplo de Video (YouTube Embed) -->
+                <!-- Video de YouTube (actualizado) -->
                 <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 col-span-1 sm:col-span-2 lg:col-span-3">
                     <div class="video-container">
-                        <!-- Reemplaza el ID del video (b1JtSp3-vXY) con el ID de tu video de YouTube -->
-                        <iframe src="https://www.youtube.com/embed/b1JtSp3-vXY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/hVXmD8mX0PY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="p-4">
-                        <p class="font-semibold text-lg text-black">Video Institucional (Ejemplo)</p>
+                        <p class="font-semibold text-lg text-black">Video de Presentación</p>
                         <p class="text-sm text-gray-600">Un vistazo a nuestras actividades y ambiente escolar.</p>
                     </div>
                 </div>
@@ -263,21 +273,21 @@
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
                     <h3 class="font-semibold text-xl mb-2 text-red-600">Inicio de Clases Ciclo 2025-2026</h3>
                     <p class="text-sm text-gray-500 mb-4">5 de Agosto de 2025</p>
-                    <p class="text-gray-700">Damos la bienvenida a todos nuestros estudiantes para el nuevo ciclo escolar. ¡Les deseamos un exitoso regreso a clases!</p>
+                    <p class="text-gray-700">Damos la bienvenida a todos nuestros estudiantes para el nuevo ciclo escolar. Les deseamos un exitoso regreso a clases!</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
                 <!-- Noticia 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
                     <h3 class="font-semibold text-xl mb-2 text-black">Concurso de Talentos TEBAEV 2025</h3>
                     <p class="text-sm text-gray-500 mb-4">15 de Julio de 2025</p>
-                    <p class="text-gray-700">¡Prepárense para mostrar sus habilidades! Próximamente abrimos inscripciones para nuestro concurso anual de talentos.</p>
+                    <p class="text-gray-700">Prepárense para mostrar sus habilidades! Próximamente abrimos inscripciones para nuestro concurso anual de talentos.</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Leer más &rarr;</a>
                 </div>
                 <!-- Noticia 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300 border border-gray-200">
                     <h3 class="font-semibold text-xl mb-2 text-red-600">Excursión al Parque Ecológico</h3>
                     <p class="text-sm text-gray-500 mb-4">20 de Junio de 2025</p>
-                    <p class="text-gray-700">Nuestros estudiantes disfrutaron de una increíble excursión educativa al parque ecológico local.</p>
+                    <p class="text-gray-700">Nuestros estudiantes disfrutaron de una increíble excursión educativa al balneario san Miguelito.</p>
                     <a href="#" class="text-red-600 hover:text-red-700 text-sm mt-4 inline-block font-semibold">Ver fotos &rarr;</a>
                 </div>
             </div>
@@ -291,13 +301,5 @@
             <p class="text-lg mb-8 max-w-2xl mx-auto">
                 Si estás interesado en formar parte de nuestra comunidad, por favor completa el siguiente formulario de pre-registro y nos pondremos en contacto contigo.
             </p>
-            <form action="#" method="POST" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-xl text-gray-800">
-                <div class="mb-6">
-                    <label for="nombre_completo" class="block text-left text-lg font-semibold mb-2 text-gray-700">Nombre Completo</label>
-                    <input type="text" id="nombre_completo" name="nombre_completo" placeholder="Tu nombre completo" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
-                </div>
-                <div class="mb-6">
-                    <label for="whatsapp" class="block text-left text-lg font-semibold mb-2 text-gray-700">Número de Contacto (WhatsApp)</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: 5512345678" class="w-full p-3 border border-gray-300 rounded-md focus:ring-red-600 focus:border-red-600" required>
-                </div>
-       
+            <form id="preregister-form" class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-xl text-gray-800">
+                <div
