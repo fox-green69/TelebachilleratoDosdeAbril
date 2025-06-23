@@ -60,6 +60,39 @@
         .nav-link-glow:hover .text-red-600 {
             text-shadow: 0 0 8px rgba(220, 38, 38, 0.8); /* Brillo en el texto */
         }
+
+        /* Estilos del Lightbox/Modal de imagen */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro semitransparente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001; /* Mayor que el navbar */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain; /* Para que la imagen se ajuste sin cortarse */
+            border-radius: 0.5rem; /* Bordes redondeados */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sombra para la imagen */
+            transform: scale(0.8);
+            transition: transform 0.3s ease-in-out;
+        }
+        .lightbox-overlay.active .lightbox-content {
+            transform: scale(1);
+        }
     </style>
 </head>
 <body class="text-gray-800 pt-16"> <!-- Padding-top para dejar espacio al navbar fijo -->
@@ -104,17 +137,17 @@
                 Demostración de Paraescolares - 3 de junio
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 cursor-pointer image-gallery-item">
                     <!-- [Image of Paraescolares demonstration event] -->
-                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622-WA0016.jpg" alt="Demostración de Paraescolares" class="w-full h-48 object-cover">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/Imagen/IMG-20250622-WA0016.jpg" alt="Demostración de Paraescolares" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-lg text-black">Talento en Acción</p>
                         <p class="text-sm text-gray-600">Alumnos exhibiendo sus habilidades en las actividades paraescolares.</p>
                     </div>
                 </div>
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 cursor-pointer image-gallery-item">
                     <!-- [Image of Paraescolares demonstration event] -->
-                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622-WA0017.jpg" alt="Demostración de Paraescolares" class="w-full h-48 object-cover">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/Imagen/IMG-20250622-WA0017.jpg" alt="Demostración de Paraescolares" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-lg text-black">Creatividad y Disciplina</p>
                         <p class="text-sm text-gray-600">Un momento de la demostración de los diversos talleres.</p>
@@ -127,20 +160,20 @@
                 Venta de Productos - 3 de junio
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 cursor-pointer image-gallery-item">
                     <!-- [Image of Product sale event] -->
-                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622WA0018.jpg" alt="Venta de Productos TEBAEV" class="w-full h-48 object-cover">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/Imagen/IMG_20250622_185942.jpg" alt="Venta de Productos TEBAEV" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-lg text-black">Emprendimiento Estudiantil</p>
                         <p class="text-sm text-gray-600">Estudiantes ofreciendo sus creaciones en la venta anual.</p>
                     </div>
                 </div>
-                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200">
+                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 cursor-pointer image-gallery-item">
                     <!-- [Image of Product sale event] -->
-                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/refs/heads/Imagen/IMG-20250622-WA0019.jpg" alt="Venta de Productos TEBAEV" class="w-full h-48 object-cover">
+                    <img src="https://raw.githubusercontent.com/fox-green69/TelebachilleratoDosdeAbril/Imagen/IMG-20250622-WA0019.jpg" alt="Venta de Productos TEBAEV" class="w-full h-48 object-cover">
                     <div class="p-4">
-                        <p class="font-semibold text-lg text-black">Innovación y Calidad</p>
-                        <p class="text-sm text-gray-600">Variedad de productos disponibles gracias al esfuerzo de nuestros alumnos.</p>
+                        <p class="font-semibold text-lg text-black">Frescura en Cada Bocado</p>
+                        <p class="text-sm text-gray-600">Deliciosos hielitos caseros preparados por nuestros talentosos alumnos.</p>
                     </div>
                 </div>
             </div>
@@ -150,7 +183,7 @@
                 Videos Destacados
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <!-- Video de YouTube (actualizado) -->
+                 <!-- Video de Presentación Oficial (actualizado) -->
                 <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 col-span-1 md:col-span-2">
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/hVXmD8mX0PY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -160,7 +193,16 @@
                         <p class="text-sm text-gray-600">Un recorrido visual por las instalaciones y actividades del Telebachillerato.</p>
                     </div>
                 </div>
-                <!-- Puedes añadir más videos aquí siguiendo la misma estructura -->
+                <!-- Nuevo Video: Presentación de Paraescolares (3 de junio) -->
+                <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden border border-gray-200 col-span-1 md:col-span-2">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/P8dQjG_RkLk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <p class="font-semibold text-lg text-black">Presentación de Paraescolares - 3 de junio</p>
+                        <p class="text-sm text-gray-600">Un resumen de la emocionante demostración de talentos de nuestros estudiantes.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Puedes añadir más secciones de galería aquí para diferentes eventos/temas -->
@@ -180,6 +222,11 @@
             </p>
         </div>
     </footer>
+
+    <!-- Lightbox/Modal HTML -->
+    <div id="lightbox" class="lightbox-overlay">
+        <img src="" alt="Imagen Ampliada" class="lightbox-content" id="lightbox-img">
+    </div>
 
     <script>
         // JavaScript para el botón de menú hamburguesa (igual que en index.html)
@@ -210,6 +257,40 @@
                         navLinks.classList.add('hidden');
                         navLinks.classList.remove('flex');
                     }
+                }
+            });
+
+            // JavaScript para el Lightbox/Modal
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const galleryItems = document.querySelectorAll('.image-gallery-item'); // Selecciona todos los elementos de la galería que pueden ser clicados
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img'); // Busca la imagen dentro del item clicado
+                    if (img) { // Asegúrate de que hay una imagen dentro
+                        lightbox.classList.add('active');
+                        lightboxImg.src = img.src;
+                        lightboxImg.alt = img.alt;
+                        document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+                    }
+                });
+            });
+
+            // Cierra el lightbox al hacer clic fuera de la imagen
+            lightbox.addEventListener('click', (e) => {
+                // Solo cierra si el clic no es directamente sobre la imagen grande
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = ''; // Habilita el scroll del fondo
+                }
+            });
+
+            // Cierra el lightbox al presionar la tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             });
         });
